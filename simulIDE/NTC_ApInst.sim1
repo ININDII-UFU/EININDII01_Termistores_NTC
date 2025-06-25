@@ -26,7 +26,7 @@
 
 <item itemtype="Resistor" CircId="Resistor-85" mainComp="false" ShowProp="Resistance" Show_id="true" Show_Val="true" Pos="-4,-304" rotation="0" hflip="1" vflip="1" label="R2" idLabPos="-9,-29" labelrot="0" valLabPos="-9,-20" valLabRot="0" Resistance="1 kΩ" />
 
-<item itemtype="Rectangle" CircId="Rectangle-113" mainComp="false" Show_id="true" Show_Val="false" Pos="-4,-368" rotation="0" hflip="1" vflip="1" label="Amplificador de Instrumentação" idLabPos="-79,-99" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="250 _Pixels" V_size="200 _Pixels" Border="2 _Pixels" Z_Value="-1" Color="#a0a0a4" Opacity="1" />
+<item itemtype="Rectangle" CircId="Rectangle-113" mainComp="false" Show_id="true" Show_Val="false" Pos="-4,-368" rotation="0" hflip="1" vflip="1" label="Amplificador de Instrumentação" idLabPos="-85.0106,-99" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="250 _Pixels" V_size="200 _Pixels" Border="2 _Pixels" Z_Value="-1" Color="#a0a0a4" Opacity="1" />
 
 <item itemtype="Rectangle" CircId="Rectangle-114" mainComp="false" Show_id="true" Show_Val="false" Pos="204,-368" rotation="0" hflip="1" vflip="1" label="Ponte de wheatstone" idLabPos="-52,-99" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="150 _Pixels" V_size="200 _Pixels" Border="2 _Pixels" Z_Value="-1" Color="#a0a0a4" Opacity="1" />
 
@@ -44,7 +44,7 @@
 
 <item itemtype="SerialPort" CircId="SerialPort-293" mainComp="false" Show_id="false" Show_Val="false" Pos="-288,-420" rotation="0" hflip="1" vflip="1" label="SerialPort-293" idLabPos="-20,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" Port="COM18" Baudrate="115200 _Bauds" DataBits="8 _Bits" StopBits="1 _Bits" SerialMon="false" />
 
-<item itemtype="Thermistor" CircId="Thermistor-301" mainComp="false" Show_id="false" Show_Val="false" Pos="220,-340" rotation="-90" hflip="1" vflip="1" label="Thermistor-301" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Temp="25 ºC" Min_Temp="0 ºC" Max_Temp="200 ºC" Dial_Step="0 ºC" B="3455" R25="10000 Ω" Slider="false" Scale="1" />
+<item itemtype="Thermistor" CircId="Thermistor-301" mainComp="false" ShowProp="Temp" Show_id="false" Show_Val="true" Pos="220,-340" rotation="-90" hflip="1" vflip="1" label="Thermistor-301" idLabPos="-16,-24" labelrot="0" valLabPos="-13.2679,7.05061" valLabRot="90" Temp="137.6 ºC" Min_Temp="0 ºC" Max_Temp="200 ºC" Dial_Step="0 ºC" B="3455" R25="10000 Ω" Slider="false" Scale="1" />
 
 <item itemtype="Node" CircId="Node-81" mainComp="false" Pos="32,-432" />
 
