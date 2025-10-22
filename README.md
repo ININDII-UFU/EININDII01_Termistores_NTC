@@ -5,7 +5,7 @@ Este repositório contém um guia completo sobre termistores, abrangendo conceit
 
 ## Aplicação
 
-O conteúdo aqui apresentado foi desenvolvido para a disciplina **EE 317 - Controle e Automação Industrial**. Ele aborda de forma prática e teórica os diferentes usos dos termistores em sistemas industriais e laboratoriais.
+O conteúdo aqui apresentado foi desenvolvido para a disciplina **Instrumentação Industrial II**. Ele aborda de forma prática e teórica os diferentes usos dos termistores em sistemas industriais e laboratoriais.
 
 ## Conteúdo
 
