@@ -1,162 +1,165 @@
-# Instrumentação Industrial II
-## Aula Prática 01: Termistor
+# 🧪 Instrumentação Industrial II  
+### Aula Prática 01 — Termistor e Calibração NTC
 
-Este repositório contém um guia completo sobre termistores, abrangendo conceitos fundamentais, características, aplicações práticas e informações técnicas detalhadas. Este material é voltado para estudantes, pesquisadores e profissionais da área de engenharia e automação.
+Este repositório apresenta um **guia teórico e prático sobre termistores**, abrangendo desde seus fundamentos até a aplicação computacional para **calibração de sensores NTC**.  
+O conteúdo foi desenvolvido para a disciplina **Instrumentação Industrial II**, mas também é útil para estudantes, técnicos e engenheiros interessados em automação e medição de temperatura.
 
-## Aplicação
+---
 
-O conteúdo aqui apresentado foi desenvolvido para a disciplina **Instrumentação Industrial II**. Ele aborda de forma prática e teórica os diferentes usos dos termistores em sistemas industriais e laboratoriais.
+## 📘 Índice
 
-## Conteúdo
-
-1. [Introdução](#1-introdução)
-2. [Operação Básica](#2-operação-básica)
-3. [Equação de Steinhart-Hart](#3-equação-de-steinhart-hart)
-4. [Parâmetro B (Beta)](#4-parâmetro-b-beta)
-5. [Modelo com Condução Elétrica](#5-modelo-com-condução-elétrica)
-6. [Efeito do Autoaquecimento](#6-efeito-do-autoaquecimento)
-7. [Medição de Fluxo de Ar ou Líquidos](#7-medição-de-fluxo-de-ar-ou-líquidos)
-8. [Uso do NTC para Aumentar a Vida Útil de Lâmpadas](#8-uso-do-ntc-para-aumentar-a-vida-útil-de-lâmpadas)
-9. [Exemplos de Aplicações](#9-exemplos-de-aplicações)
-10. [Considerações Finais](#10-considerações-finais)
+1. [Introdução](#1-introdução)  
+2. [Operação Básica](#2-operação-básica)  
+3. [Equação de Steinhart–Hart](#3-equação-de-steinharthart)  
+4. [Parâmetro B (Modelo Beta)](#4-parâmetro-b-modelo-beta)  
+5. [Ferramenta Prática: NTC Thermistor Calibrator](#5-ferramenta-prática-ntc-thermistor-calibrator)  
+6. [Considerações Finais](#6-considerações-finais)  
+7. [Referências](#7-referências)
 
 ---
 
 ## 1. Introdução
 
-Um **termistor** é um tipo de resistor cuja resistência elétrica varia de acordo com a temperatura. O termo é uma combinação das palavras *temperatura* e *resistor*. Os termistores desempenham um papel fundamental em diversas aplicações industriais e tecnológicas.
+Um **termistor** é um resistor sensível à temperatura, cuja resistência elétrica varia de acordo com a variação térmica. O termo combina as palavras *“temperatura”* e *“resistor”*.  
+Esses dispositivos são amplamente empregados em instrumentação, controle de processos, eletrônica embarcada e aplicações laboratoriais.
 
 **Principais usos de termistores:**
-- Medição de temperatura em ambientes diversos.
-- Limitação de correntes de partida em circuitos.
+- Medição de temperatura em ambientes industriais e laboratoriais.  
+- Controle térmico em sistemas eletrônicos.  
+- Limitação de corrente de partida.  
 - Proteção contra sobrecorrente.
-- Controle de temperatura em sistemas eletrônicos.
 
 ### Tipos de Termistores
 
-Existem dois tipos principais de termistores:
-- **NTC (Negative Temperature Coefficient):** A resistência diminui com o aumento da temperatura.
-- **PTC (Positive Temperature Coefficient):** A resistência aumenta com o aumento da temperatura.
+- **NTC (Negative Temperature Coefficient):** resistência diminui com o aumento da temperatura.  
+- **PTC (Positive Temperature Coefficient):** resistência aumenta com o aumento da temperatura.
 
 **Figura 1: Aparência de um termistor**  
-![Figura 1](images/figura1_termistor.png)
+![Figura 1](assets/figura1.webp)
 
 **Figura 2: Símbolo de um termistor**  
-![Figura 2](images/figura2_simbolo.png)
+![Figura 2](assets/figura2.webp)
 
 ---
 
 ## 2. Operação Básica
 
-A operação de um termistor pode ser descrita pela equação linear básica:
+A variação de resistência em função da temperatura pode ser expressa pela equação linear:
 
 ```bash
 ΔR = k * ΔT
-`````
+```
 
-**Onde:**
-- `ΔR`: Variação da resistência.
-- `k`: Coeficiente de temperatura.
-- `ΔT`: Variação da temperatura.
+Onde:  
+- `ΔR`: variação da resistência;  
+- `k`: coeficiente de temperatura;  
+- `ΔT`: variação da temperatura.
 
-Os tipos de termistores são determinados pelo sinal do coeficiente de temperatura. Resumidamente:
-- Coeficiente positivo: Termistor PTC (resistência aumenta com a temperatura).
-- Coeficiente negativo: Termistor NTC (resistência diminui com a temperatura).
+Os termistores são classificados de acordo com o sinal de `k`:  
+- `k` positivo → PTC  
+- `k` negativo → NTC  
 
 ---
 
-## 3. Equação de Steinhart-Hart
+## 3. Equação de Steinhart–Hart
 
-Para variações maiores de temperatura, a equação de Steinhart-Hart é mais precisa:
+Para faixas mais amplas de temperatura, o comportamento do termistor é descrito de forma mais precisa pela equação de **Steinhart–Hart**:
 
 ```bash
 1/T = a + b * ln(R) + c * (ln(R))^3
-`````
+```
 
-**Onde:**
-- `T`: Temperatura em Kelvin.
-- `R`: Resistência em Ohms.
-- `a`, `b`, `c`: Constantes específicas do termistor.
+Onde:  
+- `T`: temperatura absoluta (Kelvin);  
+- `R`: resistência (ohms);  
+- `a`, `b`, `c`: constantes características do sensor.  
 
-Essa equação é amplamente utilizada em sensores de alta precisão, com erros típicos menores que 0,02°C.
+Essa equação é amplamente usada em aplicações de alta precisão, com erro inferior a 0,02 °C.
 
 ---
 
-## 4. Parâmetro B (Beta)
+## 4. Parâmetro B (Modelo Beta)
 
-O parâmetro B (ou Beta) é uma simplificação da equação de Steinhart-Hart, usado principalmente em termistores do tipo NTC. Ele é representado por:
+Uma versão simplificada da equação é o **modelo Beta (β)**, expresso por:
 
 ```bash
-R = R0 * exp(B * (1/T - 1/T0))
-`````
+R = R0 * exp[B * (1/T - 1/T0)]
+```
 
+Onde:  
+- `R0`: resistência a uma temperatura de referência (geralmente 25 °C);  
+- `B`: constante beta;  
+- `T`: temperatura atual (Kelvin).  
 
-**Onde:**
-- `R0`: Resistência a uma temperatura de referência (geralmente 25°C).
-- `B`: Constante beta.
-- `T`: Temperatura atual em Kelvin.
-
-Esse modelo é utilizado para simplificar o cálculo de resistência em aplicações práticas.
-
----
-
-## 5. Modelo com Condução Elétrica
-
-Termistores são geralmente fabricados com materiais semicondutores, como óxidos metálicos. O princípio de funcionamento baseia-se no aumento da densidade de elétrons livres com o aumento da temperatura, resultando em maior condutividade e menor resistência.
-
-**Aplicações comuns:**
-- PTC em dispositivos de proteção como fusíveis.
-- NTC em medições sensíveis de temperatura.
+Esse modelo é prático para cálculos rápidos e aproximações de comportamento NTC.
 
 ---
 
-## 6. Efeito do Autoaquecimento
+## 5. Ferramenta Prática: NTC Thermistor Calibrator
 
-Quando uma corrente elétrica passa pelo termistor, ocorre dissipação de energia na forma de calor, afetando a precisão da medição. Embora isso possa ser uma limitação em alguns casos, o efeito de autoaquecimento também é explorado em aplicações como:
-- Temporizadores baseados em termistores.
-- Medição de fluxo de ar ou líquidos.
+Para complementar a parte teórica, este repositório inclui o software **NTC Thermistor Calibrator**, desenvolvido em **Python (Tkinter + Matplotlib)**, que permite **calcular e visualizar os coeficientes Steinhart–Hart e Beta** com base em medições experimentais.
 
-**Equação da potência dissipada:**
+### 🔧 Funcionalidades
+
+- Cálculo automático dos coeficientes **A**, **B**, **C**, **β** e **R25**;  
+- Conversão bidirecional (`R ↔ T`);  
+- Gráficos interativos comparando os modelos Steinhart–Hart e Beta;  
+- Exportação de coeficientes em `.json`;  
+- Interface simples e responsiva.
+
+### 🖥️ Interface principal
+
+![Interface principal](assets/ntc_main_ui.png)  
+**Figura 3.** Interface do software, com três pares R–T e gráfico “R vs. Temperature”.  
+Os pontos azuis representam os dados experimentais e as curvas mostram os modelos ajustados.
+
+> 💡 *Como gerar a figura:*  
+> Execute o programa (`python ntc_calibrator.py`), insira os valores padrão (`25000 Ω @ 5 °C`, `10000 Ω @ 25 °C`, `4000 Ω @ 45 °C`) e clique em **Compute**.  
+
+---
+
+### 📈 Comparação entre Modelos
+
+![Comparação modelos](assets/ntc_models_compare.png)  
+**Figura 4.** Comparação entre o modelo **Steinhart–Hart** (azul) e o **modelo β** (laranja), de 0 °C a 60 °C.
+
+---
+
+### 🧾 Exportação dos Coeficientes
+
+![Coeficientes exportados](assets/ntc_coefficients_json.png)  
+**Figura 5.** Exemplo de arquivo `ntc_coeffs.json` gerado automaticamente com os parâmetros de calibração.
+
+---
+
+### 🚀 Execução
 
 ```bash
-P = V * I
-`````
+python ntc_calibrator.py
+```
+
+**Requisitos:**
+- Python 3.8+  
+- Tkinter  
+- NumPy  
+- Matplotlib  
+
+**Arquivo-fonte:** [`ntc_calibrator.py`](python/ntc_calibrator.py)
 
 ---
 
-## 7. Medição de Fluxo de Ar ou Líquidos
+## 6. Considerações Finais
 
-Termistores podem ser usados para medir o fluxo de fluidos. A variação de resistência causada pelo resfriamento do termistor em ambientes com fluxo pode ser correlacionada ao fluxo de ar ou líquido.
-
-**Figura 3: Usando termistor para medir a velocidade de um avião**  
-![Figura 3](images/figura3_fluxo_ar.png)
+O estudo dos **termistores NTC e PTC** oferece uma base sólida para compreender fenômenos térmicos em sistemas eletrônicos e industriais.  
+Com o uso do software de calibração, é possível obter **curvas precisas e modelos matemáticos aplicáveis** tanto no ambiente acadêmico quanto em projetos de automação.
 
 ---
 
-## 8. Uso do NTC para Aumentar a Vida Útil de Lâmpadas
+## 7. Referências
 
-Termistores NTC são usados para limitar correntes de partida em lâmpadas incandescentes, reduzindo o impacto inicial e prolongando a vida útil do filamento.
-
-**Figura 4: NTC usado para aumentar a vida útil de uma lâmpada**  
-![Figura 4](images/figura4_lampada.png)
-
----
-
-## 9. Exemplos de Aplicações
-
-- **Controle Automotivo:** Monitoramento de temperatura do motor e do sistema de ar condicionado.
-- **Sistemas Biomédicos:** Medição precisa de temperatura corporal.
-- **Eletrônica de Potência:** Limitação de correntes em circuitos de alta potência.
-
----
-
-## 10. Considerações Finais
-
-Os termistores são sensores altamente versáteis e indispensáveis em diversas áreas da indústria. Suas características de sensibilidade e estabilidade os tornam ideais para aplicações que exigem precisão e confiabilidade.
-
----
-
-## Referências
-
-- Materiais baseados no arquivo original.
-- Mais detalhes disponíveis no material fonte.
+- Apostila de Instrumentação Industrial II – UFU  
+- Steinhart, J.S. & Hart, S.R. (1968). *Calibration curves for thermistors.* Deep-Sea Research, 15(4), 497–503.  
+- [Documentação do Python](https://docs.python.org/3/)  
+- [Tkinter Reference](https://docs.python.org/3/library/tkinter.html)  
+- [Matplotlib Documentation](https://matplotlib.org/stable/index.html)  
+- [Teoria dos Termistores – Wikipedia](https://pt.wikipedia.org/wiki/Termistor)
