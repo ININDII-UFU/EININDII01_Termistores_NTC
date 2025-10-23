@@ -29,24 +29,30 @@ double getTempTermistorNTCSteinhart(const uint16_t analogValue, const uint16_t s
 void setup()
 {
   Serial.begin(115200); // INICIALIZA A SERIAL
-  delay(1000);        // INTERVALO DE 1 SEGUNDO
+  delay(1000);          // INTERVALO DE 1 SEGUNDO
 }
+
+#define TIME_DELAY_MS1 1000 //Aguarda um segundo 
+uint64_t previousTimeMS1 = 0;
+
 void loop()
 {
-  uint16_t adc = analogRead(NTC_PIN);
-  float temperature1 = getTempTermistorNTCBeta(adc,                    // Analog Value
-                                               10000,                  // Nominal resistance at 25 ºC
-                                               3455,                   // thermistor's beta coefficient
-                                               10000);                 // Value of the series resistor
-  float temperature2 = getTempTermistorNTCSteinhart(adc,               // Analog Value
-                                                    10000,             // Value of the series resistor
-                                                    0.001129241,       // a
-                                                    0.0002341077,      // b
-                                                    0.00000008775468); // c
-  Serial.print(">Temp Beta: ");                                        // IMPRIME O TEXTO NO MONITOR SERIAL
-  Serial.println(temperature1);                                        // IMPRIME NO MONITOR SERIAL A TEMPERATURA MEDIDA
-  Serial.print(">Temp Steinhart: ");                                   // IMPRIME O TEXTO NO MONITOR SERIAL
-  Serial.println(temperature2);                                        // IMPRIME NO MONITOR SERIAL A TEMPERATURA MEDIDA
-
-  delay(1000); // INTERVALO DE 1 SEGUNDO
+  const uint64_t currentTimeMS = millis();
+  if ((currentTimeMS - previousTimeMS1) >= TIME_DELAY_MS1)
+  {
+    uint16_t adc = analogRead(NTC_PIN);
+    float temperature1 = getTempTermistorNTCBeta(adc,                    // Analog Value
+                                                 10000,                  // Nominal resistance at 25 ºC
+                                                 3455,                   // thermistor's beta coefficient
+                                                 10000);                 // Value of the series resistor
+    float temperature2 = getTempTermistorNTCSteinhart(adc,               // Analog Value
+                                                      10000,             // Value of the series resistor
+                                                      0.001129241,       // a
+                                                      0.0002341077,      // b
+                                                      0.00000008775468); // c
+    Serial.print(">Temp Beta: ");                                        // IMPRIME O TEXTO NO MONITOR SERIAL
+    Serial.println(temperature1);                                        // IMPRIME NO MONITOR SERIAL A TEMPERATURA MEDIDA
+    Serial.print(">Temp Steinhart: ");                                   // IMPRIME O TEXTO NO MONITOR SERIAL
+    Serial.println(temperature2);                                        // IMPRIME NO MONITOR SERIAL A TEMPERATURA MEDIDA
+  }
 }
